@@ -1,0 +1,13 @@
+.user-panel-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+.title{
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+}
+.user-panel-element{
+    margin:auto;
+    margin-top:20px;
+    }
