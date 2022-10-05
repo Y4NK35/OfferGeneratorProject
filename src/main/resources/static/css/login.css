@@ -4,7 +4,7 @@
 }
 
 .form-wrapper{
-    display:flex
+    display:flex;
 }
 .login-form{
 	display: flex;

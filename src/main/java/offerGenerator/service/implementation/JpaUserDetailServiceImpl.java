@@ -20,11 +20,9 @@ public class JpaUserDetailServiceImpl implements UserDetailsService   {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-    UserRepository userRepository;
-
     @Autowired
-    public JpaUserDetailServiceImpl(UserRepository userRepository){
-        this.userRepository = userRepository;
+    UserRepository userRepository;
+    public JpaUserDetailServiceImpl(){
     }
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

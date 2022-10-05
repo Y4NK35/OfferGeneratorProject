@@ -1,15 +1,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <div class="menu" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <div class="menu-separator-v"></div>
-    <a class="menu-element" href="/home">Home</a>
+    <div class="menu-element" href="/home">Home</div>
     <div class="menu-separator-v"></div>
-    <a class="menu-element" href="/offers">Offers</a>
+    <div class="dropdown" href="/offers">Offers
+        <div class="dropdown-content">
+            <a href="/offers/option1">Option1</a>
+            <a href="/offers/option2">Option2</a>
+            <a href="/offers/option3">Option3</a>
+        </div>
+    </div>
+
     <div class="menu-separator-v"></div>
-    <a class="menu-element" href="/offers">Clients</a>
+    <div class="dropdown" href="/clients">Clients
+        <div class="dropdown-content">
+            <a href="/clients/option1">Option1</a>
+            <a href="/clients/option2">Option2</a>
+            <a href="/clients/option3">Option3</a>
+        </div>
+    </div>
     <div class="menu-separator-v"></div>
-    <a class="menu-element" href="/user_panel">User panel</a>
+    <div class="dropdown" href="/user_panel"> User panel
+        <div class="dropdown-content">
+            <a href="/user_panel">User panel</a>
+            <a href="/user_panel/set_user_details">Set details</a>
+            <a href="/user_panel/change_password">Change password</a>
+            <a href="/user_panel/delete_account">Delete account</a>
+        </div>
+    </div>
     <div sec:authorize="hasAuthority('ADMIN')" class="menu-separator-v"></div>
-    <a sec:authorize="hasAuthority('ADMIN')" class="menu-element" href="/admin_panel">Admin panel</a>
+    <div sec:authorize="hasAuthority('ADMIN')" class="menu-element" href="/admin_panel">Admin panel</div>
     <div class="menu-separator-v"></div>
     <form action="/user_logout" method="POST">
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>

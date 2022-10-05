@@ -37,9 +37,11 @@ public class SignUpServiceImpl implements SignUpService {
     public User signUpUser(User user) throws Exception {
         Assert.notNull(user.getIdUser(), CAN_T_SIGN_UP_USER_IT_ALREADY_HAS_SET_ID);
         if(userRepository.findByUsername(user.getUsername()).isPresent()){
+            System.out.println("Username already taken");
             throw new Exception("Username is taken. Try login.");
         }
         if(userRepository.findByEmail(user.getEmail()).isPresent()){
+            System.out.println("Email is taken. Try login to account or use another email.");
             throw new Exception("Email is taken. Try login to account or use another email.");
         }
 
@@ -51,7 +53,7 @@ public class SignUpServiceImpl implements SignUpService {
             user.getRoles().add(roleOptional.get());
         }
         User savedUser = userRepository.save(user);
-        signUpMailer.sendConfirmationLink(user.getEmail(),token);
+        signUpMailer.sendConfirmationLink( user.getUsername(), user.getEmail(),token);
         System.out.println(user.getConfirmationToken());
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());

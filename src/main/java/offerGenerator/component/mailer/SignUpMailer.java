@@ -15,11 +15,11 @@ public class SignUpMailer {
       this.mailSender = mailSender;
       this.signUpMailTextFactory =signUpMailTextFactory;
     }
-  public void sendConfirmationLink(String email, String token){
+  public void sendConfirmationLink(String username, String email, String token){
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(email);
         message.setSubject(signUpMailTextFactory.getConfirmationMailSubject());
-        message.setText(signUpMailTextFactory.getConfirmationMailText(token));
+        message.setText(signUpMailTextFactory.getConfirmationMailText(username, token));
         mailSender.send(message);
   }
 }

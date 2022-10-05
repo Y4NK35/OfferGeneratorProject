@@ -1,6 +1,7 @@
 package offerGenerator;
 
 import offerGenerator.component.CustomDaoAuthenticationProvider;
+import offerGenerator.service.implementation.JpaUserDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,14 +22,13 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authenticationProvider(customDaoAuthenticationProvider);
         http
-                .authorizeRequests()
-                .antMatchers("/login").permitAll()
+                .authorizeRequests().antMatchers("/login").permitAll()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/confirm_account").permitAll()
                 .antMatchers("/sign_up").permitAll()
                 .antMatchers("/admin_panel").hasAuthority("ADMIN")
-                .anyRequest().authenticated()
-                .and()
+                .anyRequest().authenticated().
+                and()
                 .formLogin()
                 .loginPage("/login")
                 .usernameParameter("username")

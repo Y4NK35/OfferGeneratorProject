@@ -7,9 +7,6 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 public class User implements UserDetails {
@@ -29,8 +26,11 @@ public class User implements UserDetails {
     @Column
     private String confirmationToken;
 
-    @Column
-    private boolean Enabled;
+    @Column(columnDefinition = "boolean default false")
+    private boolean enabled;
+
+    @Column(columnDefinition = "boolean default true")
+    private boolean nonLocked;
 
     @Column
     @ManyToMany(fetch = FetchType.EAGER)
@@ -45,6 +45,7 @@ public class User implements UserDetails {
         user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);
+        user.setNonLocked(true);
         user.setEnabled(false);
         user.roles = new HashSet<Role>();
         return user;
@@ -72,7 +73,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return nonLocked;
     }
 
     @Override
@@ -82,7 +83,7 @@ public class User implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 
     public long getIdUser() {
@@ -118,9 +119,16 @@ public class User implements UserDetails {
     }
 
     public void setEnabled(boolean enabled) {
-        Enabled = enabled;
+        this.enabled  = enabled;
     }
 
+    public boolean isNonLocked() {
+        return nonLocked;
+    }
+
+    public void setNonLocked(boolean nonLocked) {
+        this.nonLocked = nonLocked;
+    }
 
     public Set<Role> getRoles() {
         return roles;

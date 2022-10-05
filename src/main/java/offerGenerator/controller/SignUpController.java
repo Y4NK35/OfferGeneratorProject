@@ -44,7 +44,6 @@ public class SignUpController {
             mav.setViewName("redirect:/login");
             return mav;
         }else
-            System.out.println("to");
             mav.setViewName("account_not_confirmed");
             return mav;
     }
