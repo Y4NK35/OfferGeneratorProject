@@ -38,6 +38,10 @@ public class User implements UserDetails {
             ,inverseJoinColumns = @JoinColumn(name = "id_role"))
     private Set<Role> roles;
 
+    @OneToOne
+    @JoinColumn(name = "idUserInformation")
+    private UserInformation userInformation;
+
     public User() {
     }
     public static User of(String username, String password, String email){
@@ -136,5 +140,13 @@ public class User implements UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public UserInformation getUserInformation() {
+        return userInformation;
+    }
+
+    public void setUserInformation(UserInformation userInformation) {
+        this.userInformation = userInformation;
     }
 }

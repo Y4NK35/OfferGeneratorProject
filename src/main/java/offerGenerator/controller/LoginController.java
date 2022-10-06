@@ -12,9 +12,5 @@ public class LoginController {
         mav.setViewName("login");
         return mav;
     }
-    @GetMapping(value = "/user_panel")
-    public ModelAndView userPanel(ModelAndView mav) {
-        mav.setViewName("user_panel");
-        return mav;
-    }
+
 }
