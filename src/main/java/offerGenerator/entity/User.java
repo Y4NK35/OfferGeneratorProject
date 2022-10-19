@@ -38,7 +38,7 @@ public class User implements UserDetails {
             ,inverseJoinColumns = @JoinColumn(name = "id_role"))
     private Set<Role> roles;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
     @JoinColumn(name = "idUserInformation")
     private UserInformation userInformation;
 
@@ -46,6 +46,9 @@ public class User implements UserDetails {
     }
     public static User of(String username, String password, String email){
         User user = new User();
+        UserInformation userInformation = new UserInformation();
+        userInformation.setUser(user);
+        user.setUserInformation(userInformation);
         user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);

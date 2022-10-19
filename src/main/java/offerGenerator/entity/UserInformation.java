@@ -15,11 +15,11 @@ public class UserInformation {
     @Column
     private String postalCode;
     @Column
-    private String postOfficeCity;
+    private String city;
     @Column
     private String nip;
 
-    @OneToOne(mappedBy = "userInformation")
+    @OneToOne(mappedBy = "userInformation", cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
     private User user;
 
     public UserInformation() {
@@ -65,12 +65,12 @@ public class UserInformation {
         this.postalCode = postalCode;
     }
 
-    public String getPostOfficeCity() {
-        return postOfficeCity;
+    public String getCity() {
+        return city;
     }
 
-    public void setPostOfficeCity(String postOfficeCity) {
-        this.postOfficeCity = postOfficeCity;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getNip() {
