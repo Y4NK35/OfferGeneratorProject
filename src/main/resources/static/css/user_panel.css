@@ -10,4 +10,12 @@
 .user-panel-element{
     margin:auto;
     margin-top:20px;
-    }
+}
+.details-form{
+	display: flex;
+	height: auto;
+	flex-direction: column;
+	margin: auto;
+	margin-top: 10px;
+	padding: 15px 20px 15px 20px;
+}

@@ -12,7 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@EnableWebSecurity(debug=false)
+@EnableWebSecurity(debug=true)
 public class SecurityConfig {
     @Autowired
     private PasswordEncoder passwordEncoder;
