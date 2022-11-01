@@ -1,0 +1,26 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete account</title>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/user_panel.css">
+</head>
+<body>
+
+<div th:insert="menu.html :: div"></div>
+<div class="form-wrapper">
+    <form class="details-form" action="/user_panel_delete_account" method='POST'>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+        <h1 class=" text login-element">Are you sure you want to permanently delete your account? <br> Account could not be restored.</h1>
+        <div class=" text  login-element">Enter password:</div>
+        <input class="input login-element" type='password' name="password" value=''>
+        <div class=" text  login-element">Confirm password:</div>
+        <input class="input login-element" type='password' name="passwordconfirm" value=''>
+
+        <input class="button login-element" name="submit" type="submit" value="Delete account">
+
+    </form>
+</div>
+</body>
+</html>
