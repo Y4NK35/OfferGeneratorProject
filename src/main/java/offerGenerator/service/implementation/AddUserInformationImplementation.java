@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 import javax.swing.text.html.Option;
 import java.util.Optional;
 @Service
-public class UserInformationAddImplementation implements AddUserInformation {
+public class AddUserInformationImplementation implements AddUserInformation {
 
     UserRepository userRepository;
     UserInformationRepository userInformationRepository;
     @Autowired
-    public UserInformationAddImplementation  (UserRepository userRepository, UserInformationRepository userInformationRepository){
+    public AddUserInformationImplementation(UserRepository userRepository, UserInformationRepository userInformationRepository){
         this.userRepository=userRepository;
         this.userInformationRepository =userInformationRepository;
     }
