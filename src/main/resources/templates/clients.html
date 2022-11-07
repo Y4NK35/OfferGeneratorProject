@@ -1,0 +1,44 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Clients</title>
+    <link rel="stylesheet" type="text/css" href="css/menu.css">
+    <link rel="stylesheet" type="text/css" href="css/user_panel.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" type="text/css" href="css/client.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<div th:insert="menu.html :: div"></div>
+<div class="form-wrapper ">
+    <div class="table-form">
+        <table class="table">
+            <thead class="td-style">
+            <tr class="td-style">
+                <td class="text-td-head">Company name</td>
+                <td class="text-td-head">City</td>
+                <td class="text-td-head">Address street</td>
+                <td class="text-td-head">Number of building</td>
+                <td class="text-td-head">Postal code</td>
+                <td class="text-td-head">Nip</td>
+                <td class="text-td-head">Edit</td>
+                <td class="text-td-head">Delete</td>
+            </tr>
+            </thead>
+            <tbody >
+            <tr class="tr" th:each="client : ${clients}">
+                <td class="text-td" th:text="${client.clientName}"></td>
+                <td class="text-td" th:text="${client.city}"></td>
+                <td class="text-td" th:text="${client.addressStreet}"></td>
+                <td class="text-td" th:text="${client.addressNumberOfBuilding}"></td>
+                <td class="text-td" th:text="${client.postalCode}"></td>
+                <td class="text-td" th:text="${client.nip}"></td>
+                <td ><a class="text-td" th:href="${'/client_edit_' +client.idClient}">Edit</a></td>
+                <td ><a class="text-td" th:href="${'/client_delete/' +client.idClient}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

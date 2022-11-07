@@ -1,44 +1,56 @@
 package offerGenerator.entity;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+
 @Entity
-public class UserInformation {
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long idUserInformation;
+    private long idClient;
 
     @Column
-    private String companyName = "Set details";
+    private String clientName;
     @Column
-    private String addressStreet = "Set details";
+    private String addressStreet;
     @Column
-    private String addressNumberOfBuilding = "Set details";
+    private String addressNumberOfBuilding;
     @Column
-    private String postalCode = "Set details";
+    private String postalCode;
     @Column
-    private String city = "Set details";
+    private String city;
     @Column
-    private String nip = "Set details";
+    private String nip;
 
-    @OneToOne(mappedBy = "userInformation", cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "id_user")
     private User user;
-
-    public UserInformation() {
+    public static Client of(String clientName, String city, String addressStreet, String addressNumberOfBuilding, String postalCode, String nip){
+        Client client = new Client();
+        client.setClientName(clientName);
+        client.setCity(city);
+        client.setAddressStreet(addressStreet);
+        client.setAddressNumberOfBuilding(addressNumberOfBuilding);
+        client.setPostalCode(postalCode);
+        client.setNip(nip);
+        return client;
     }
 
-    public long getIdUserInformation() {
-        return idUserInformation;
+    public long getIdClient() {
+        return idClient;
     }
 
-    public void setIdUserInformation(long idUserInformation) {
-        this.idUserInformation = idUserInformation;
+    public void setIdClient(long idClient) {
+        this.idClient = idClient;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getClientName() {
+        return clientName;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setClientName(String companyName) {
+        this.clientName = companyName;
     }
 
     public String getAddressStreet() {

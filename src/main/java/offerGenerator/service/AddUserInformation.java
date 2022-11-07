@@ -12,5 +12,4 @@ public interface AddUserInformation {
                             String addressNumberOfBuilding,
                             String postalCode,
                             String nip);
-
 }

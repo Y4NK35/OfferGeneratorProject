@@ -4,13 +4,30 @@
     <title>User panel</title>
     <link rel="stylesheet" type="text/css" href="css/menu.css">
     <link rel="stylesheet" type="text/css" href="css/user_panel.css">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <div th:insert="menu.html :: div"></div>
-    <div class="user-panel-wrapper">
-
-    <div class="title user-panel-element">User Panel</div>
+    <div class="form-wrapper">
+        <div class="details-form">
+            <h1 class=" title user-panel-element">Your account details:</h1>
+            <div class="text  login-element"> Company name:</div>
+            <div class="text2  login-element" th:text="${userInformation.companyName}"></div>
+            <div class="text  login-element"> City:</div>
+            <div class=" text2  login-element" th:text="${userInformation.city}"></div>
+            <div class="text  login-element"> Street address:</div>
+            <div class=" text2  login-element" th:text="${userInformation.addressStreet}"></div>
+            <div class="text  login-element"> Number of buildings:</div>
+            <div class=" text2  login-element" th:text="${userInformation.addressNumberOfBuilding}"></div>
+            <div class="text login-element"> Postal code:</div>
+            <div class=" text2  login-element" th:text="${userInformation.postalCode}"></div>
+            <div class="text  login-element"> Nip:</div>
+            <div class=" text2  login-element" th:text="${userInformation.nip}"></div>
+            <a class="" href="/user_panel_set_details">
+            <input class="button login-element" name="submit" type="" value="Edit information">
+            </a>
+        </div>
     </div>
 </body>
 </html>

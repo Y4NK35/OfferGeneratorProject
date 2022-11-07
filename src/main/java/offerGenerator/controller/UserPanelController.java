@@ -35,12 +35,20 @@ public class UserPanelController {
 
     @GetMapping(value = "/user_panel")
     public ModelAndView userPanel(ModelAndView mav) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<User> userOptional = userRepository.findByUsername((String)principal);
+        User user = userOptional.get();
+        mav.addObject("userInformation",user.getUserInformation());
         mav.setViewName("user_panel");
         return mav;
     }
 
     @GetMapping(value = "/user_panel_set_details")
     public ModelAndView userPanelSetDetailsGet(ModelAndView mav) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Optional<User> userOptional = userRepository.findByUsername((String)principal);
+        User user = userOptional.get();
+        mav.addObject("userInformation",user.getUserInformation());
         mav.setViewName("user_panel_set_details");
         return mav;
     }

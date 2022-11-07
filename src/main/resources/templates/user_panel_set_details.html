@@ -15,17 +15,17 @@
         <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
         <h1 class=" title user-panel-element">Set your account details</h1>
         <div class=" text  login-element">Company name:</div>
-        <input class="input login-element" type='text' name="companyName" value=''>
+        <input class="input login-element" type='text' name="companyName" th:value='${userInformation.companyName}'>
         <div class="text login-element">City: </div>
-        <input class="input login-element" type='text' name="city" value=''>
+        <input class="input login-element" type='text' name="city" th:value='${userInformation.city}'>
         <div class="text login-element">Street address:</div>
-        <input class="input login-element" type='text' name="addressStreet" value=''>
+        <input class="input login-element" type='text' name="addressStreet" th:value='${userInformation.addressStreet}'>
         <div class="text login-element">Number of buildings:</div>
-        <input class="input login-element" type='text' name="addressNumberOfBuilding" value=''>
+        <input class="input login-element" type='text' name="addressNumberOfBuilding" th:value='${userInformation.addressNumberOfBuilding}'>
         <div class="text login-element">Postal code:</div>
-        <input class="input login-element" type='text' name="postalCode" value=''>
+        <input class="input login-element" type='text' name="postalCode" th:value='${userInformation.postalCode}'>
         <div class="text login-element">Nip:</div>
-        <input class="input login-element" type='text' name="nip" value=''>
+        <input class="input login-element" type='text' name="nip" th:value='${userInformation.nip}'>
         <input class="button login-element" name="submit" type="submit" value="Save">
     </form>
 </div>

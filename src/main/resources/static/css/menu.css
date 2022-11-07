@@ -45,9 +45,8 @@ body{
     font-size: 1.3rem;
     font-weight: 700;
     font-family: "Nunito", sans-serif;
-    transition: 0.3s;
+    transition: 0.8s;
     cursor: pointer;
-
 }
 
 .dropdown-content {
@@ -56,12 +55,15 @@ body{
   left: 0px;
   top: 100%;
   color: white;
+  background-color: rgba(255, 255, 255, 0.8);
+
   font-size: 1rem;
   font-weight: 400;
   font-family: "Nunito", sans-serif;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+
 }
 .dropdown-content a {
   color: black;
@@ -70,9 +72,12 @@ body{
   display: block;
 }
 .dropdown-content a:hover {
-background-color: var(--secondary-blue);}
+    background-color: var(--secondary-blue);
+
+}
 .dropdown:hover .dropdown-content {
   display: block;
+
 }
 .dropdown:hover  {
   background-color: var(--secondary-blue);

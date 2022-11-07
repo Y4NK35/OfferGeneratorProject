@@ -24,6 +24,7 @@ public class SecurityConfig {
         http
                 .authorizeRequests().antMatchers("/login").permitAll()
                 .antMatchers("/css/**").permitAll()
+                .antMatchers("/resources/**").permitAll()
                 .antMatchers("/confirm_account").permitAll()
                 .antMatchers("/sign_up").permitAll()
                 .antMatchers("/admin_panel").hasAuthority("ADMIN")
@@ -45,7 +46,7 @@ public class SecurityConfig {
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
 
-        return (web) -> web.ignoring().antMatchers("/images/**", "/js/**", "/webjars/**");
+        return (web) -> web.ignoring().antMatchers("/images/**","/resources/**", "/js/**", "/webjars/**");
 
     }
 }

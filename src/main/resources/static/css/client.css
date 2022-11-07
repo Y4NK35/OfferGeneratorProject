@@ -1,0 +1,38 @@
+:root{
+    --primary-blue:#3452ff;
+    --secondary-blue:#0127ff;
+}
+
+.table-form{
+	display: flex;
+	height: auto;
+	flex-direction: column;
+	margin: auto;
+	margin-top: 30px;
+	padding: 50px 40px 10px 40px;
+}
+.table{
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 5px 5px 5px 5px;
+}
+
+.text-td-head{
+    font-family: "Nunito", sans-serif;
+    font-size:1.3rem;
+    font-weight: 700;
+    background-color: var(--primary-blue);
+}
+.text-td{
+    font-family: "Nunito", sans-serif;
+    font-size:1.0rem;
+    font-weight: 500;
+}
+th, td{
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+tr:nth-child(even) {
+  background-color: #90C0FF;
+}

@@ -4,9 +4,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class User implements UserDetails {
@@ -39,8 +37,11 @@ public class User implements UserDetails {
     private Set<Role> roles;
 
     @OneToOne(cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
-    @JoinColumn(name = "idUserInformation")
+    @JoinColumn(name = "id_user_information")
     private UserInformation userInformation;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Client> clients;
 
     public User() {
     }
@@ -55,6 +56,8 @@ public class User implements UserDetails {
         user.setNonLocked(true);
         user.setEnabled(false);
         user.roles = new HashSet<Role>();
+        user.userInformation = new UserInformation();
+        user.clients = new ArrayList<>();
         return user;
     }
 
@@ -152,4 +155,17 @@ public class User implements UserDetails {
     public void setUserInformation(UserInformation userInformation) {
         this.userInformation = userInformation;
     }
+
+    public List<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
+    }
+
+    public void addClient(Client client){
+        clients.add(client);
+     }
+
 }
