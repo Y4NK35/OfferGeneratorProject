@@ -3,6 +3,7 @@ package offerGenerator.entity;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 @Entity
 public class Client {
@@ -26,6 +27,10 @@ public class Client {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "id_user")
     private User user;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<Offer> offers;
+
     public static Client of(String clientName, String city, String addressStreet, String addressNumberOfBuilding, String postalCode, String nip){
         Client client = new Client();
         client.setClientName(clientName);
@@ -99,5 +104,13 @@ public class Client {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
     }
 }

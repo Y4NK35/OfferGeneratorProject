@@ -1,7 +1,13 @@
 package offerGenerator.entity;
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import java.text.DecimalFormat;
+import java.util.List;
+
 @Entity
 public class UserInformation {
+   // private DecimalFormat nrOfeFormat = new DecimalFormat("00000");
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idUserInformation;
@@ -18,9 +24,15 @@ public class UserInformation {
     private String city = "Set details";
     @Column
     private String nip = "Set details";
+    @Column
+    private static int  nrOfOffer=0;
+
 
     @OneToOne(mappedBy = "userInformation", cascade = {CascadeType.REMOVE,CascadeType.PERSIST})
     private User user;
+
+    @OneToMany(mappedBy = "userInformation", cascade = CascadeType.ALL)
+    private List<Offer> offers;
 
     public UserInformation() {
     }
@@ -81,11 +93,28 @@ public class UserInformation {
         this.nip = nip;
     }
 
+    public int getNrOfOffer() {
+        return nrOfOffer;
+    }
+
+    public void setNrOfOffer(int nrOfOffer) {
+        this.nrOfOffer = nrOfOffer;
+    }
+
+
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Offer> getOffers() {
+        return offers;
+    }
+
+    public void setOffers(List<Offer> offers) {
+        this.offers = offers;
     }
 }

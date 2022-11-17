@@ -35,6 +35,7 @@ public class AddUserInformationImplementation implements AddUserInformation {
     userInformation.setAddressNumberOfBuilding(addressNumberOfBuilding);
     userInformation.setPostalCode(postalCode);
     userInformation.setNip(nip);
+    userInformation.setNrOfOffer(0);
     user.setUserInformation(userInformation);
     userRepository.save(user);
     return user;
